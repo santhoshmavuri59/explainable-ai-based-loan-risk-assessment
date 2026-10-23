@@ -1,0 +1,6 @@
+{
+  "name": "Explainable AI-Based Loan Risk Assessment",
+  "description": "Enterprise credit risk evaluation platform featuring multi-model inference (XGBoost, Random Forest, LightGBM), SHAP attributions, OCR verification, fraud detection, and What-If simulation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

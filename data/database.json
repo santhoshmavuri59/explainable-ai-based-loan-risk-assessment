@@ -1,0 +1,753 @@
+{
+  "users": [
+    {
+      "id": "usr_admin_001",
+      "name": "Eleanor Vance",
+      "email": "admin@riskmatrix.ai",
+      "phone": "+1 (555) 902-1144",
+      "role": "admin",
+      "createdAt": "2026-01-10T09:00:00Z"
+    },
+    {
+      "id": "usr_app_001",
+      "name": "David Miller",
+      "email": "david.miller@example.com",
+      "phone": "+1 (555) 349-2810",
+      "role": "applicant",
+      "createdAt": "2026-02-14T11:20:00Z"
+    },
+    {
+      "id": "usr_app_002",
+      "name": "Sarah Chen",
+      "email": "sarah.chen@example.com",
+      "phone": "+1 (555) 781-9921",
+      "role": "applicant",
+      "createdAt": "2026-02-18T14:10:00Z"
+    },
+    {
+      "id": "usr_app_003",
+      "name": "Marcus Brody",
+      "email": "marcus.brody@example.com",
+      "phone": "+1 (555) 441-6532",
+      "role": "applicant",
+      "createdAt": "2026-02-22T16:45:00Z"
+    },
+    {
+      "id": "usr_test_1791526445282",
+      "name": "Automated Test Applicant",
+      "email": "test_1791526445282@test.org",
+      "phone": "+1 555-0199",
+      "role": "applicant",
+      "createdAt": "2026-10-09T06:14:05.282Z"
+    },
+    {
+      "id": "usr_test_1791526885276",
+      "name": "Automated Test Applicant",
+      "email": "test_1791526885276@test.org",
+      "phone": "+1 555-0199",
+      "role": "applicant",
+      "createdAt": "2026-10-09T06:21:25.276Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "APP-2026-0041",
+      "applicantId": "usr_app_001",
+      "applicantName": "David Miller",
+      "applicantEmail": "david.miller@example.com",
+      "applicantPhone": "+1 (555) 349-2810",
+      "loanAmount": 45000,
+      "loanTenureMonths": 36,
+      "loanPurpose": "Debt Consolidation",
+      "monthlyIncome": 6200,
+      "employmentType": "Salaried",
+      "employmentDurationYears": 4,
+      "existingMonthlyDebt": 2400,
+      "creditScore": 640,
+      "assetValue": 35000,
+      "homeOwnership": "Rent",
+      "debtToIncomeRatio": 38.7,
+      "paymentToIncomeRatio": 23.4,
+      "status": "Approved",
+      "documents": [
+        {
+          "id": "doc_seed_01",
+          "applicationId": "APP-2026-0041",
+          "docType": "identity_proof",
+          "fileName": "david_miller_passport.pdf",
+          "fileSize": 245000,
+          "status": "Matched",
+          "confidence": 0.98,
+          "extractedFields": {
+            "applicantName": "David Miller",
+            "idNumber": "P-98831092",
+            "issueAuthority": "Dept of State",
+            "documentDate": "2024-06-15"
+          }
+        },
+        {
+          "id": "doc_seed_02",
+          "applicationId": "APP-2026-0041",
+          "docType": "salary_slip",
+          "fileName": "paystub_jan2026.pdf",
+          "fileSize": 182000,
+          "status": "Matched",
+          "confidence": 0.94,
+          "extractedFields": {
+            "applicantName": "David Miller",
+            "income": 6200,
+            "employerName": "Apex Logistics LLC",
+            "documentDate": "2026-01-31"
+          }
+        },
+        {
+          "id": "doc_seed_03",
+          "applicationId": "APP-2026-0041",
+          "docType": "bank_statement",
+          "fileName": "bank_statement_q4.pdf",
+          "fileSize": 420000,
+          "status": "Matched",
+          "confidence": 0.91,
+          "extractedFields": {
+            "applicantName": "David Miller",
+            "income": 6150,
+            "accountNumber": "****-****-4412",
+            "documentDate": "2026-01-15"
+          }
+        }
+      ],
+      "fraudAlerts": [],
+      "createdAt": "2026-02-15T09:30:00Z",
+      "updatedAt": "2026-02-15T09:45:00Z",
+      "latestPrediction": {
+        "id": "pred_1791526445278_7oscch",
+        "applicationId": "APP-2026-0041",
+        "modelVersion": "xgb-v2.4.1-calibrated",
+        "modelName": "XGBoost",
+        "riskScore": 63,
+        "riskBand": "Medium Risk",
+        "defaultProbability": 0.7168,
+        "calibrated": true,
+        "baseValue": 42,
+        "shapFactors": [
+          {
+            "feature": "dtiNorm",
+            "label": "Debt-to-Income (DTI)",
+            "value": "0.48",
+            "contribution": 11.1,
+            "description": "High DTI ratio (>36%) increases default hazard"
+          },
+          {
+            "feature": "creditScoreNorm",
+            "label": "Credit Bureau Score",
+            "value": "0.62",
+            "contribution": 9.6,
+            "description": "Subprime or moderate credit bureau history (<660)"
+          }
+        ],
+        "summaryExplanation": "Assessment generated via XGBoost (xgb-v2.4.1-calibrated). Expected base risk score is 42 points. Primary upward risk pressure stems from Debt-to-Income (DTI) (+11.1 pts) and Credit Bureau Score (+9.6 pts). Calibrated estimated probability of default is 71.7%.",
+        "createdAt": "2026-10-09T06:14:05.278Z",
+        "isHypothetical": false
+      },
+      "adminDecision": "Approved",
+      "adminDecisionReason": "Verified prime repayment history and stable career tenure",
+      "adminDecisionBy": "Eleanor Vance"
+    },
+    {
+      "id": "APP-2026-0042",
+      "applicantId": "usr_app_002",
+      "applicantName": "Sarah Chen",
+      "applicantEmail": "sarah.chen@example.com",
+      "applicantPhone": "+1 (555) 781-9921",
+      "loanAmount": 25000,
+      "loanTenureMonths": 24,
+      "loanPurpose": "Home Purchase",
+      "monthlyIncome": 11500,
+      "employmentType": "Salaried",
+      "employmentDurationYears": 8,
+      "existingMonthlyDebt": 1200,
+      "creditScore": 785,
+      "assetValue": 140000,
+      "homeOwnership": "Own",
+      "debtToIncomeRatio": 10.4,
+      "paymentToIncomeRatio": 9.8,
+      "status": "Approved",
+      "adminDecision": "Approved",
+      "adminDecisionReason": "Low DTI (<11%), prime credit history (785), clean document verification and strong reserve assets.",
+      "adminDecisionBy": "Eleanor Vance",
+      "adminDecisionAt": "2026-02-19T10:15:00Z",
+      "documents": [
+        {
+          "id": "doc_seed_04",
+          "applicationId": "APP-2026-0042",
+          "docType": "identity_proof",
+          "fileName": "chen_dl_verified.png",
+          "fileSize": 195000,
+          "status": "Matched",
+          "confidence": 0.99,
+          "extractedFields": {
+            "applicantName": "Sarah Chen",
+            "idNumber": "DL-7729103",
+            "issueAuthority": "DMV California",
+            "documentDate": "2025-08-20"
+          }
+        },
+        {
+          "id": "doc_seed_05",
+          "applicationId": "APP-2026-0042",
+          "docType": "salary_slip",
+          "fileName": "earnings_statement.pdf",
+          "fileSize": 310000,
+          "status": "Matched",
+          "confidence": 0.97,
+          "extractedFields": {
+            "applicantName": "Sarah Chen",
+            "income": 11500,
+            "employerName": "BioHealth Solutions",
+            "documentDate": "2026-01-31"
+          }
+        }
+      ],
+      "fraudAlerts": [],
+      "createdAt": "2026-02-18T14:30:00Z",
+      "updatedAt": "2026-02-19T10:15:00Z",
+      "latestPrediction": {
+        "id": "pred_1791526445279_9py9wt",
+        "applicationId": "APP-2026-0042",
+        "modelVersion": "lgbm-v4.0.2-calibrated",
+        "modelName": "LightGBM",
+        "riskScore": 24,
+        "riskBand": "Low Risk",
+        "defaultProbability": 0.135,
+        "calibrated": true,
+        "baseValue": 41.5,
+        "shapFactors": [
+          {
+            "feature": "creditScoreNorm",
+            "label": "High Bureau Score",
+            "value": "0.88",
+            "contribution": -9.6,
+            "description": "Exceptional repayment history on existing credit lines"
+          },
+          {
+            "feature": "dtiNorm",
+            "label": "Strong Free Cash Flow",
+            "value": "0.13",
+            "contribution": -7.5,
+            "description": "Borrower maintains >80% discretionary income headroom"
+          }
+        ],
+        "summaryExplanation": "Assessment generated via LightGBM (lgbm-v4.0.2-calibrated). Expected base risk score is 42 points. Key positive mitigating factors include High Bureau Score (-9.6 pts) and Strong Free Cash Flow (-7.5 pts). Calibrated estimated probability of default is 13.5%.",
+        "createdAt": "2026-10-09T06:14:05.279Z",
+        "isHypothetical": false
+      }
+    },
+    {
+      "id": "APP-2026-0043",
+      "applicantId": "usr_app_003",
+      "applicantName": "Marcus Brody",
+      "applicantEmail": "marcus.brody@example.com",
+      "applicantPhone": "+1 (555) 441-6532",
+      "loanAmount": 85000,
+      "loanTenureMonths": 60,
+      "loanPurpose": "Small Business",
+      "monthlyIncome": 4500,
+      "employmentType": "Self-Employed",
+      "employmentDurationYears": 1,
+      "existingMonthlyDebt": 3100,
+      "creditScore": 590,
+      "assetValue": 8000,
+      "homeOwnership": "Rent",
+      "debtToIncomeRatio": 68.9,
+      "paymentToIncomeRatio": 42.1,
+      "status": "Verification Required",
+      "documents": [
+        {
+          "id": "doc_seed_06",
+          "applicationId": "APP-2026-0043",
+          "docType": "identity_proof",
+          "fileName": "m_brody_id_scan.png",
+          "fileSize": 310000,
+          "status": "Matched",
+          "confidence": 0.95,
+          "extractedFields": {
+            "applicantName": "Marcus Brody",
+            "idNumber": "ID-5501934",
+            "issueAuthority": "Dept of Licensing",
+            "documentDate": "2023-01-10"
+          }
+        },
+        {
+          "id": "doc_seed_07",
+          "applicationId": "APP-2026-0043",
+          "docType": "salary_slip",
+          "fileName": "payslip_mismatch.pdf",
+          "fileSize": 220000,
+          "status": "Mismatch detected",
+          "confidence": 0.88,
+          "extractedFields": {
+            "applicantName": "Marcus Brody",
+            "income": 2800,
+            "employerName": "Brody Consulting",
+            "documentDate": "2026-01-15"
+          },
+          "mismatches": [
+            "Declared monthly income ($4,500) deviates from Pay Slip gross income ($2,800) by 37.8%"
+          ]
+        }
+      ],
+      "fraudAlerts": [
+        {
+          "id": "alert_seed_01",
+          "applicationId": "APP-2026-0043",
+          "applicantName": "Marcus Brody",
+          "detectionType": "document_mismatch",
+          "severity": "high",
+          "reason": "Cross-Document Verification Discrepancy: Declared income $4,500 vs Payslip $2,800 (37.8% lower)",
+          "evidence": {
+            "declaredIncome": 4500,
+            "extractedIncome": 2800,
+            "discrepancy": "37.8%"
+          },
+          "status": "Pending",
+          "createdAt": "2026-02-22T17:05:00Z"
+        },
+        {
+          "id": "alert_seed_02",
+          "applicationId": "APP-2026-0043",
+          "applicantName": "Marcus Brody",
+          "detectionType": "statistical_anomaly",
+          "severity": "high",
+          "reason": "Statistical Outlier: DTI (68.9%) and Loan-to-Annual Income ratio (18.8x) significantly exceed lending tolerance.",
+          "evidence": {
+            "isolationScore": 92.4,
+            "dti": "68.9%"
+          },
+          "status": "Pending",
+          "createdAt": "2026-02-22T17:05:00Z"
+        }
+      ],
+      "createdAt": "2026-02-22T17:00:00Z",
+      "updatedAt": "2026-02-22T17:05:00Z",
+      "latestPrediction": {
+        "id": "pred_1791526445279_a2socm",
+        "applicationId": "APP-2026-0043",
+        "modelVersion": "xgb-v2.4.1-calibrated",
+        "modelName": "XGBoost",
+        "riskScore": 80,
+        "riskBand": "High Risk",
+        "defaultProbability": 0.895,
+        "calibrated": true,
+        "baseValue": 42,
+        "shapFactors": [
+          {
+            "feature": "dtiNorm",
+            "label": "Debt-to-Income (DTI)",
+            "value": "0.86",
+            "contribution": 13.8,
+            "description": "High DTI ratio (>36%) increases default hazard"
+          },
+          {
+            "feature": "creditScoreNorm",
+            "label": "Credit Bureau Score",
+            "value": "0.53",
+            "contribution": 9.6,
+            "description": "Subprime or moderate credit bureau history (<660)"
+          },
+          {
+            "feature": "docMismatchPenalty",
+            "label": "OCR Cross-Document Integrity",
+            "value": "0.35",
+            "contribution": 9,
+            "description": "Unresolved cross-document salary or identity discrepancy"
+          },
+          {
+            "feature": "employmentNorm",
+            "label": "Employment Stability",
+            "value": "0.07",
+            "contribution": 5.64,
+            "description": "Short employment history (<3 years at current employer)"
+          }
+        ],
+        "summaryExplanation": "Assessment generated via XGBoost (xgb-v2.4.1-calibrated). Expected base risk score is 42 points. Primary upward risk pressure stems from Debt-to-Income (DTI) (+13.8 pts) and Credit Bureau Score (+9.6 pts). Calibrated estimated probability of default is 89.5%.",
+        "createdAt": "2026-10-09T06:14:05.279Z",
+        "isHypothetical": false
+      }
+    },
+    {
+      "id": "APP-TEST-1791526445283",
+      "applicantId": "usr_app_001",
+      "applicantName": "David Miller",
+      "applicantEmail": "david.miller@example.com",
+      "applicantPhone": "+1 555-349-2810",
+      "loanAmount": 30000,
+      "loanTenureMonths": 36,
+      "loanPurpose": "Debt Consolidation",
+      "monthlyIncome": 6000,
+      "employmentType": "Salaried",
+      "employmentDurationYears": 5,
+      "existingMonthlyDebt": 1800,
+      "creditScore": 680,
+      "assetValue": 20000,
+      "homeOwnership": "Rent",
+      "debtToIncomeRatio": 30,
+      "paymentToIncomeRatio": 13.9,
+      "status": "Submitted",
+      "documents": [],
+      "fraudAlerts": [],
+      "createdAt": "2026-10-09T06:14:05.283Z",
+      "updatedAt": "2026-10-09T06:14:05.283Z"
+    },
+    {
+      "id": "APP-TEST-1791526885277",
+      "applicantId": "usr_app_001",
+      "applicantName": "David Miller",
+      "applicantEmail": "david.miller@example.com",
+      "applicantPhone": "+1 555-349-2810",
+      "loanAmount": 30000,
+      "loanTenureMonths": 36,
+      "loanPurpose": "Debt Consolidation",
+      "monthlyIncome": 6000,
+      "employmentType": "Salaried",
+      "employmentDurationYears": 5,
+      "existingMonthlyDebt": 1800,
+      "creditScore": 680,
+      "assetValue": 20000,
+      "homeOwnership": "Rent",
+      "debtToIncomeRatio": 30,
+      "paymentToIncomeRatio": 13.9,
+      "status": "Submitted",
+      "documents": [],
+      "fraudAlerts": [],
+      "createdAt": "2026-10-09T06:21:25.277Z",
+      "updatedAt": "2026-10-09T06:21:25.277Z"
+    },
+    {
+      "id": "APP-2026-7617",
+      "applicantId": "usr_admin_001",
+      "applicantName": "Eleanor Vance",
+      "applicantEmail": "admin@riskmatrix.ai",
+      "applicantPhone": "+1 (555) 902-1144",
+      "loanAmount": 35000,
+      "loanTenureMonths": 36,
+      "loanPurpose": "Debt Consolidation",
+      "monthlyIncome": 6500,
+      "employmentType": "Salaried",
+      "employmentDurationYears": 4,
+      "existingMonthlyDebt": 1600,
+      "creditScore": 680,
+      "assetValue": 25000,
+      "homeOwnership": "Rent",
+      "debtToIncomeRatio": 24.6,
+      "paymentToIncomeRatio": 15,
+      "status": "Risk Assessment Completed",
+      "documents": [
+        {
+          "id": "doc_1791908920176_yi1fhq",
+          "applicationId": "APP-2026-7617",
+          "docType": "identity_proof",
+          "fileName": "government_id_card.pdf",
+          "fileSize": 155530,
+          "status": "Matched",
+          "confidence": 0.96,
+          "extractedFields": {
+            "applicantName": "Eleanor Vance",
+            "idNumber": "ID-99482104-X",
+            "issueAuthority": "National Identification Authority",
+            "documentDate": "2023-04-12"
+          },
+          "mismatches": []
+        },
+        {
+          "id": "doc_1791908920176_950xuz",
+          "applicationId": "APP-2026-7617",
+          "docType": "salary_slip",
+          "fileName": "recent_payslip_verified.pdf",
+          "fileSize": 198451,
+          "status": "Matched",
+          "confidence": 0.92,
+          "extractedFields": {
+            "applicantName": "Eleanor Vance",
+            "income": 6500,
+            "employerName": "Horizon Technologies Inc",
+            "documentDate": "2026-02-28"
+          },
+          "mismatches": []
+        },
+        {
+          "id": "doc_1791908920176_9tc12o",
+          "applicationId": "APP-2026-7617",
+          "docType": "bank_statement",
+          "fileName": "bank_statement_90days.pdf",
+          "fileSize": 184036,
+          "status": "Matched",
+          "confidence": 0.89,
+          "extractedFields": {
+            "applicantName": "Eleanor Vance",
+            "income": 6370,
+            "accountNumber": "****-****-8819",
+            "documentDate": "2026-03-01"
+          },
+          "mismatches": []
+        }
+      ],
+      "fraudAlerts": [],
+      "createdAt": "2026-10-13T16:28:40.176Z",
+      "updatedAt": "2026-10-13T16:28:40.176Z",
+      "latestPrediction": {
+        "id": "pred_1791908920177_zkym11",
+        "applicationId": "APP-2026-7617",
+        "modelVersion": "xgb-v2.4.1-calibrated",
+        "modelName": "XGBoost",
+        "riskScore": 42,
+        "riskBand": "Medium Risk",
+        "defaultProbability": 0.3609,
+        "calibrated": true,
+        "baseValue": 42,
+        "shapFactors": [],
+        "summaryExplanation": "Assessment generated via XGBoost (xgb-v2.4.1-calibrated). Expected base risk score is 42 points. Calibrated estimated probability of default is 36.1%.",
+        "createdAt": "2026-10-13T16:28:40.177Z",
+        "isHypothetical": false
+      }
+    },
+    {
+      "id": "APP-2026-3315",
+      "applicantId": "usr_admin_001",
+      "applicantName": "Eleanor Vance",
+      "applicantEmail": "admin@riskmatrix.ai",
+      "applicantPhone": "+1 (555) 902-1144",
+      "loanAmount": 35000,
+      "loanTenureMonths": 36,
+      "loanPurpose": "Debt Consolidation",
+      "monthlyIncome": 6500,
+      "employmentType": "Salaried",
+      "employmentDurationYears": 4,
+      "existingMonthlyDebt": 1600,
+      "creditScore": 680,
+      "assetValue": 25000,
+      "homeOwnership": "Rent",
+      "debtToIncomeRatio": 24.6,
+      "paymentToIncomeRatio": 15,
+      "status": "Verification Required",
+      "documents": [
+        {
+          "id": "doc_1791909138081_b2ewlw",
+          "applicationId": "APP-2026-3315",
+          "docType": "identity_proof",
+          "fileName": "government_id_card.pdf",
+          "fileSize": 174737,
+          "status": "Matched",
+          "confidence": 0.96,
+          "extractedFields": {
+            "applicantName": "Eleanor Vance",
+            "idNumber": "ID-99482104-X",
+            "issueAuthority": "National Identification Authority",
+            "documentDate": "2023-04-12"
+          },
+          "mismatches": []
+        },
+        {
+          "id": "doc_1791909138081_puxaux",
+          "applicationId": "APP-2026-3315",
+          "docType": "salary_slip",
+          "fileName": "recent_payslip_verified.pdf",
+          "fileSize": 172703,
+          "status": "Matched",
+          "confidence": 0.92,
+          "extractedFields": {
+            "applicantName": "Eleanor Vance",
+            "income": 6500,
+            "employerName": "Horizon Technologies Inc",
+            "documentDate": "2026-02-28"
+          },
+          "mismatches": []
+        },
+        {
+          "id": "doc_1791909138081_gmyrh1",
+          "applicationId": "APP-2026-3315",
+          "docType": "bank_statement",
+          "fileName": "bank_statement_90days.pdf",
+          "fileSize": 198033,
+          "status": "Matched",
+          "confidence": 0.89,
+          "extractedFields": {
+            "applicantName": "Eleanor Vance",
+            "income": 6370,
+            "accountNumber": "****-****-8819",
+            "documentDate": "2026-03-01"
+          },
+          "mismatches": []
+        }
+      ],
+      "fraudAlerts": [
+        {
+          "id": "alert_dup_1791909138081_xnsl",
+          "applicationId": "APP-2026-3315",
+          "applicantName": "Eleanor Vance",
+          "detectionType": "duplicate_pattern",
+          "severity": "high",
+          "reason": "Velocity Warning: Found 1 prior application(s) sharing identical email or phone number.",
+          "evidence": {
+            "duplicateIds": [
+              "APP-2026-7617"
+            ],
+            "matchedField": "email"
+          },
+          "status": "Pending",
+          "createdAt": "2026-10-13T16:32:18.081Z"
+        }
+      ],
+      "createdAt": "2026-10-13T16:32:18.081Z",
+      "updatedAt": "2026-10-13T16:32:18.081Z",
+      "latestPrediction": {
+        "id": "pred_1791909138081_9tyr2h",
+        "applicationId": "APP-2026-3315",
+        "modelVersion": "xgb-v2.4.1-calibrated",
+        "modelName": "XGBoost",
+        "riskScore": 42,
+        "riskBand": "Medium Risk",
+        "defaultProbability": 0.3609,
+        "calibrated": true,
+        "baseValue": 42,
+        "shapFactors": [],
+        "summaryExplanation": "Assessment generated via XGBoost (xgb-v2.4.1-calibrated). Expected base risk score is 42 points. Calibrated estimated probability of default is 36.1%.",
+        "createdAt": "2026-10-13T16:32:18.081Z",
+        "isHypothetical": false
+      }
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud_1791909245885_rcfl",
+      "timestamp": "2026-10-13T16:34:05.885Z",
+      "actor": "Eleanor Vance",
+      "actorRole": "admin",
+      "action": "MODEL_RETRAINED",
+      "targetId": "model_lab",
+      "targetType": "model_training",
+      "details": "Initiated retraining cycle for All. Held-out validation completed with Platt probability calibration."
+    },
+    {
+      "id": "aud_1791909138082_p6aa",
+      "timestamp": "2026-10-13T16:32:18.082Z",
+      "actor": "Eleanor Vance",
+      "actorRole": "admin",
+      "action": "APPLICATION_SUBMITTED",
+      "targetId": "APP-2026-3315",
+      "targetType": "application",
+      "details": "Application submitted for $35,000 (Debt Consolidation). Risk Score: 42 (Medium Risk).",
+      "newState": "Verification Required"
+    },
+    {
+      "id": "aud_1791908920183_1bkf",
+      "timestamp": "2026-10-13T16:28:40.183Z",
+      "actor": "Eleanor Vance",
+      "actorRole": "admin",
+      "action": "APPLICATION_SUBMITTED",
+      "targetId": "APP-2026-7617",
+      "targetType": "application",
+      "details": "Application submitted for $35,000 (Debt Consolidation). Risk Score: 42 (Medium Risk).",
+      "newState": "Risk Assessment Completed"
+    },
+    {
+      "id": "aud_1791526885305_4koy",
+      "timestamp": "2026-10-09T06:21:25.305Z",
+      "actor": "Eleanor Vance",
+      "actorRole": "admin",
+      "action": "POLICY_THRESHOLD_UPDATED",
+      "targetId": "policy_settings",
+      "targetType": "policy_config",
+      "details": "High-risk threshold adjusted to 65 points.",
+      "previousState": "70",
+      "newState": "65"
+    },
+    {
+      "id": "aud_1791526445348_za7j",
+      "timestamp": "2026-10-09T06:14:05.348Z",
+      "actor": "Eleanor Vance",
+      "actorRole": "admin",
+      "action": "POLICY_THRESHOLD_UPDATED",
+      "targetId": "policy_settings",
+      "targetType": "policy_config",
+      "details": "High-risk threshold adjusted to 65 points.",
+      "previousState": "70",
+      "newState": "65"
+    },
+    {
+      "id": "aud_001",
+      "timestamp": "2026-02-15T09:30:00Z",
+      "actor": "David Miller",
+      "actorRole": "applicant",
+      "action": "APPLICATION_SUBMITTED",
+      "targetId": "APP-2026-0041",
+      "targetType": "application",
+      "details": "Submitted loan request for $45,000 (Debt Consolidation, 36 months).",
+      "newState": "Submitted"
+    },
+    {
+      "id": "aud_002",
+      "timestamp": "2026-02-15T09:45:00Z",
+      "actor": "System OCR & ML Engine",
+      "actorRole": "system",
+      "action": "RISK_ASSESSMENT_COMPLETED",
+      "targetId": "APP-2026-0041",
+      "targetType": "prediction",
+      "details": "Risk score computed: 72 (High Risk) via XGBoost v2.4.1. TreeSHAP generated 5 key factors.",
+      "previousState": "Submitted",
+      "newState": "Risk Assessment Completed"
+    },
+    {
+      "id": "aud_003",
+      "timestamp": "2026-02-18T14:30:00Z",
+      "actor": "Sarah Chen",
+      "actorRole": "applicant",
+      "action": "APPLICATION_SUBMITTED",
+      "targetId": "APP-2026-0042",
+      "targetType": "application",
+      "details": "Submitted loan request for $25,000 (Home Purchase, 24 months).",
+      "newState": "Submitted"
+    },
+    {
+      "id": "aud_004",
+      "timestamp": "2026-02-19T10:15:00Z",
+      "actor": "Eleanor Vance",
+      "actorRole": "admin",
+      "action": "ADMIN_DECISION_RECORDED",
+      "targetId": "APP-2026-0042",
+      "targetType": "application",
+      "details": "Decision Approved recorded with underwriter reason: Low DTI and prime credit score.",
+      "previousState": "Risk Assessment Completed",
+      "newState": "Approved"
+    },
+    {
+      "id": "aud_005",
+      "timestamp": "2026-02-22T17:00:00Z",
+      "actor": "Marcus Brody",
+      "actorRole": "applicant",
+      "action": "APPLICATION_SUBMITTED",
+      "targetId": "APP-2026-0043",
+      "targetType": "application",
+      "details": "Submitted loan request for $85,000.",
+      "newState": "Submitted"
+    },
+    {
+      "id": "aud_006",
+      "timestamp": "2026-02-22T17:05:00Z",
+      "actor": "System OCR Service",
+      "actorRole": "system",
+      "action": "DOCUMENT_MISMATCH_FLAGGED",
+      "targetId": "APP-2026-0043",
+      "targetType": "document",
+      "details": "Discrepancy detected: Declared income $4,500 vs Payslip $2,800. Status shifted to Verification Required.",
+      "previousState": "Submitted",
+      "newState": "Verification Required"
+    }
+  ],
+  "systemSettings": {
+    "lowRiskMax": 34,
+    "mediumRiskMax": 64,
+    "highRiskMin": 65,
+    "activeModel": "XGBoost",
+    "autoFraudScreening": true
+  }
+}
